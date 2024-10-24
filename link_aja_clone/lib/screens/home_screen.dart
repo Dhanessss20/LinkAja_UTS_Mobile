@@ -14,68 +14,80 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 48, 16, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Header(),
-              const SizedBox(height: 16.0),
-              Container(
-                padding: const EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 192, 18, 18),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Hi, Dhaneswara Haryo Satriagung',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                      ),
+      body: Stack(
+        children: [
+          // Background Image
+          Image.asset(
+            'assets/images/kota.png', // Ganti dengan nama file gambar Anda
+            fit: BoxFit.cover,
+            width: double.infinity, // Mengatur lebar penuh
+            height: 250, // Atur tinggi sesuai kebutuhan
+          ),
+          // Konten Utama
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 48, 16, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Header(),
+                  const SizedBox(height: 16.0),
+                  Container(
+                    padding: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 192, 18, 18),
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
-                    SizedBox(height: 16.0),
-                    Row(
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Flexible(
-                          child: BalanceCard(
-                            title: 'Your Balance',
-                            amount: 'Rp 10.000.000',
-                            icon: FontAwesomeIcons.arrowRight,
+                        Text(
+                          'Hi, Dhaneswara Haryo Satriagung',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(width: 8.0),
-                        Flexible(
-                          child: BalanceCard(
-                            title: 'Bonus Balance',
-                            amount: '0',
-                            icon: FontAwesomeIcons.arrowRight,
-                            leadingIcon: FontAwesomeIcons.gift,
-                          ),
+                        SizedBox(height: 16.0),
+                        Row(
+                          children: [
+                            Flexible(
+                              child: BalanceCard(
+                                title: 'Your Balance',
+                                amount: 'Rp 10.000.000',
+                                icon: FontAwesomeIcons.arrowRight,
+                              ),
+                            ),
+                            SizedBox(width: 8.0),
+                            Flexible(
+                              child: BalanceCard(
+                                title: 'Bonus Balance',
+                                amount: '0',
+                                icon: FontAwesomeIcons.arrowRight,
+                                leadingIcon: FontAwesomeIcons.gift,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 8.0),
+                  const ActionBox(),
+                  const SizedBox(height: 8.0),
+                  const FeatureGrid(),
+                  const SizedBox(height: 8.0),
+                  const CarouselWidget(),
+                  const SizedBox(height: 8.0),
+                  const BestDealsSection(),
+                  const SizedBox(height: 8.0),
+                  const LatestUpdatesSection(),
+                ],
               ),
-              const SizedBox(height: 8.0),
-              const ActionBox(),
-              const SizedBox(height: 8.0),
-              const FeatureGrid(),
-              const SizedBox(height: 8.0),
-              const CarouselWidget(),
-              const SizedBox(height: 8.0),
-              const BestDealsSection(),
-              const SizedBox(height: 8.0),
-              const LatestUpdatesSection(),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
